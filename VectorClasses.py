@@ -40,7 +40,8 @@ class Vector3:
         return Vector2(self.x / other, self.y / other, self.z / other)
 
     def scalar_product(self, other): # Allows to calculate the skalar from two vecotor3's 
-        return(self.x * other.y + self.y * other.y + self.z * other.z)
+        return((self.x * other.x )+ (self.y * other.y) + (self.z * other.z))
+    
     def cross_product(self, other):
         new_x = self-y * other.z - self.z * other.y
         new_y = self.z * other.x - self.x * other.z
@@ -48,7 +49,7 @@ class Vector3:
         return Vector3(new_x, new_y, new_z)
 
     def length(self): 
-        return mt.sqrt(self.x**2 + self.y**2 + self.z)
+        return mt.sqrt(self.x**2 + self.y**2 + self.z**2)
     def normalize(self): # Calculates the normalized version of a Vector3
         lenghtOfVector = self.length()
         return Vector2(self.x / lenghtOfVector, self.y / lenghtOfVector, self.z / lenghtOfVector)
