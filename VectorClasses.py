@@ -70,3 +70,16 @@ class Vector3(Vector2):
         new_y = self.z * other.x - self.x * other.z
         new_z = self.x * other.y - self.y * other.x
         return Vector3(new_x, new_y, new_z)
+    
+    class Straight2D:
+        def __init__(self, base_point, direction) -> None:
+            self.base_point = base_point
+            self.direction = direction
+        
+        def point_on_straight(self, multiplier):
+            return Vector2(self.base_point + multiplier * self.direction)
+    
+    class Straight3D(Straight2D):
+                
+        def point_on_straight(self, multiplier):
+            return Vector3(self.base_point + multiplier * self.direction)
