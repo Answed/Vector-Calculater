@@ -78,8 +78,24 @@ class Vector3(Vector2):
         
         def point_on_straight(self, multiplier):
             return Vector2(self.base_point + multiplier * self.direction)
+        
+        def convert_straight_to_equation(self):
+            x_equation = "{}+{}x".format(self.base_point.x, self.direction.x)
+            y_equation = "{}+{}x".format(self.base_point.y, self.direction.y)
+            return [x_equation, y_equation]
+
+        def distance_between_straights(self, other):
+            helparea = self.direction.scalar_product(other.base_point) # Calculates the vale of the helparea which is needed for the calculation of the point from the straight
+        
+
     
     class Straight3D(Straight2D):
                 
         def point_on_straight(self, multiplier):
             return Vector3(self.base_point + multiplier * self.direction)
+        
+        def convert_straight_to_equation(self):
+            x_equation = "{}+{}x".format(self.base_point.x, self.direction.x)
+            y_equation = "{}+{}x".format(self.base_point.y, self.direction.y)
+            z_equation = "{}+{}x".format(self.base_point.z, self.direction.z)
+            return [x_equation, y_equation, z_equation]
