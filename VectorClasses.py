@@ -77,8 +77,8 @@ class Straight2D:
         self.direction = direction
         
     def point_on_straight(self, multiplier):
-        temp_vektor = self.direction * multiplier
-        return self.base_point + temp_vektor
+        temp_vector = self.direction * multiplier
+        return self.base_point + temp_vector
 
     def convert_straight_to_equation(self):
         x_equation = "{}+{}x".format(self.base_point.x, self.direction.x)
@@ -90,8 +90,8 @@ class Straight2D:
         helparea -= number_without_parameter
         number_with_parameter = self.direction.scalar_product(self.direction)
         parameter = helparea / number_with_parameter
-        distance_vektor = self.point_on_straight(parameter) - other.base_point
-        return distance_vektor.length()
+        distance_vector = self.point_on_straight(parameter) - other.base_point
+        return distance_vector.length()
     
 class Straight3D(Straight2D):
         
@@ -100,3 +100,14 @@ class Straight3D(Straight2D):
         y_equation = "{}+{}x".format(self.base_point.y, self.direction.y)
         z_equation = "{}+{}x".format(self.base_point.z, self.direction.z)
         return [x_equation, y_equation, z_equation]
+
+class Area:
+    def __init__(self, base_point, span_vector1, span_vector2) -> None:
+        self.base_point = base_point
+        self.span_vector1 = span_vector1
+        self.span_vector2 = span_vector2
+    
+    def normal_vector(self):
+        return self.span_vector1.cross_product(self.span_vector2)
+    
+    
