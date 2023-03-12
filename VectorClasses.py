@@ -63,7 +63,7 @@ class Vector3(Vector2):
     
     # Calculations where another vector is required for 
     def scalar_product(self, other): # Allows to calculate the skalar from two vecotor3's 
-        return((self.x * other.x )+ (self.y * other.y) + (self.z * other.z))
+        return((self.x * other.x)+ (self.y * other.y) + (self.z * other.z))
     
     def cross_product(self, other): # Creates a new Vector out of the old two. 
         new_x = self.y * other.z - self.z * other.y
@@ -110,4 +110,8 @@ class Area:
     def normal_vector(self):
         return self.span_vector1.cross_product(self.span_vector2)
     
-    
+    def point_is_on_area(self, point): # Basically is it the normal form from the area 
+        temp_point = point - self.base_point
+        if (temp_point.scalar_product(self.normal_vector()) == 0): 
+            print("Is on Area") # Will be changed later for more complex use cases but for now this is enough
+        else: print("Is not on Area")
