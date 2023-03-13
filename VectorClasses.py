@@ -34,7 +34,6 @@ class Vector2:
         scalar_product = self.scalar_product(other)
         angle = mt.acos(scalar_product/(self.length() * other.length()))
         return mt.degrees(angle)
-    
 
 class Vector3(Vector2):
     def __init__(self, xValue, yValue, zValue) -> None:
@@ -115,3 +114,16 @@ class Area:
         if (temp_point.scalar_product(self.normal_vector()) == 0): 
             print("Is on Area") # Will be changed later for more complex use cases but for now this is enough
         else: print("Is not on Area")
+
+    def coordinate_form(self):
+        temp_normal = self.normal_vector()
+        check_value = temp_normal.scalar_product(self.base_point)
+        return [temp_normal, check_value]
+
+    def print_coordinate_form(self):
+        temp_coordinate_form = self.coordinate_form()
+        print("{}x + {}z + {}y = {}".format(temp_coordinate_form[0].x,temp_coordinate_form[0].y,temp_coordinate_form[0].z,temp_coordinate_form[1],))
+    
+    def distance_to_point(self, point): # Based on the Hesse normal form
+        temp_coordinate_form = self.coordinate_form()
+        return abs((temp_coordinate_form[0].scalar_product(point) - temp_coordinate_form[1] )/ temp_coordinate_form[0].length()) # Always returns the absolut Value so always returns the positiv value.
