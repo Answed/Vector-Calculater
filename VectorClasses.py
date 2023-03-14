@@ -105,10 +105,7 @@ class Area:
         self.base_point = base_point
         self.span_vector1 = span_vector1
         self.span_vector2 = span_vector2
-    
-    def normal_vector(self):
-        return self.span_vector1.cross_product(self.span_vector2)
-    
+        self.normal_vector = self.span_vector1.cross_product(self.span_vector2)
     def point_is_on_area(self, point): # Basically is it the normal form from the area 
         temp_point = point - self.base_point
         if (temp_point.scalar_product(self.normal_vector()) == 0): 
@@ -116,9 +113,8 @@ class Area:
         else: print("Is not on Area")
 
     def coordinate_form(self):
-        temp_normal = self.normal_vector()
-        check_value = temp_normal.scalar_product(self.base_point)
-        return [temp_normal, check_value]
+        check_value = self.normal_vector.scalar_product(self.base_point)
+        return [self.normal_vector, check_value]
 
     def print_coordinate_form(self):
         temp_coordinate_form = self.coordinate_form()
