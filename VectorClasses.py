@@ -84,12 +84,12 @@ class Straight2D:
         y_equation = "{}+{}x".format(self.base_point.y, self.direction.y)
 
     def distance_between_straights(self, other):
-        helparea = self.direction.scalar_product(other.base_point) # Calculates the vale of the helparea which is needed for the calculation of the point from the straight
-        number_without_parameter = self.direction.scalar_product(self.base_point)
-        helparea -= number_without_parameter
+        helparea = self.direction.scalar_product(other.base_point) # Calculates the normal vector of the helparea which is needed for the calculation of the point from the straight
+        number_without_parameter = self.direction.scalar_product(self.base_point) # Calculation is divided in to parts to make the finding of the parameter a lot easier
+        helparea -= number_without_parameter 
         number_with_parameter = self.direction.scalar_product(self.direction)
-        parameter = helparea / number_with_parameter
-        distance_vector = self.point_on_straight(parameter) - other.base_point
+        parameter = helparea / number_with_parameter 
+        distance_vector = self.point_on_straight(parameter) - other.base_point # Calculates the new point and subtracts the other point from it to find the new position vektors
         return distance_vector.length()
     
 class Straight3D(Straight2D):
@@ -106,20 +106,20 @@ class Area:
         self.span_vector1 = span_vector1
         self.span_vector2 = span_vector2
         self.normal_vector = self.span_vector1.cross_product(self.span_vector2)
-    def point_is_on_area(self, point): # Basically is it the normal form from the area 
+
+    def point_is_on_area(self, point): # Basically is it the normal form from the area equation
         temp_point = point - self.base_point
         if (temp_point.scalar_product(self.normal_vector()) == 0): 
             print("Is on Area") # Will be changed later for more complex use cases but for now this is enough
         else: print("Is not on Area")
 
-    def coordinate_form(self):
-        check_value = self.normal_vector.scalar_product(self.base_point)
-        return [self.normal_vector, check_value]
-
+    def coordinate_form(self): # Is used to calculate the value the equasion has to have in oder that the end result is right
+        return self.normal_vector.scalar_product(self.base_point)
+    
     def print_coordinate_form(self):
-        temp_coordinate_form = self.coordinate_form()
-        print("{}x + {}z + {}y = {}".format(temp_coordinate_form[0].x,temp_coordinate_form[0].y,temp_coordinate_form[0].z,temp_coordinate_form[1],))
+        check_value = self.coordinate_form()
+        print("{}x + {}z + {}y = {}".format(self.normal_vector.x,self.normal_vector.y,self.normal_vector.z, check_value))
     
     def distance_to_point(self, point): # Based on the Hesse normal form
-        temp_coordinate_form = self.coordinate_form()
-        return abs((temp_coordinate_form[0].scalar_product(point) - temp_coordinate_form[1] )/ temp_coordinate_form[0].length()) # Always returns the absolut Value so always returns the positiv value.
+        check_value = self.coordinate_form()
+        return abs((self.normal_vector.scalar_product(point) - check_value)/ self.normal_vector.length()) # Always returns the absolut Value so always returns the positiv value.
