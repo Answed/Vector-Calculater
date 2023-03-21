@@ -33,3 +33,8 @@ def generate_area(area: Area):
         y.append(new_point.y)
         z.append(new_point.z)
     return [x, y, z]
+
+def show_straight(straight: Straight2D): # Wil be changed that multiple straights can be displayed at the same time with the *args argument
+    x, y= generate_straight2d(straight)
+    plt.plot(x, y)
+    plt.show()
