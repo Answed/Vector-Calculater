@@ -22,3 +22,14 @@ def generate_straight3d(straight: Straight3D):
         y.append(new_point.y)
         z.append(new_point.z)
     return [x, y, z]
+
+def generate_area(area: Area):
+    x = []
+    y = []
+    z = []
+    for i in range(100): # Will be changeable later in development
+        new_point = area.point_is_on_area()
+        x.append(new_point.x)
+        y.append(new_point.y)
+        z.append(new_point.z)
+    return [x, y, z]
