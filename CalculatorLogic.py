@@ -39,17 +39,21 @@ def generate_area(area: Area):
             z.append(new_point.z)
     return [x, y, z]
 
-    
-def show_straight2D(*straights: Straight2D):
+def plot_straight2D(*straights: Straight2D):
     for straight in straights:
         x, y = generate_straight2d(straight)
         plt.plot(x, y)
-    plt.show()
 
-def show_straight3D(*straights: Straight3D):
+def plot_straight3D(*straights: Straight3D):
     fig = plt.figure()
     ax = plt.axes(projection = "3d")
     for straight in straights:
         x, y, z = generate_straight3d(straight)
         ax.plot3D(x, y, z)
-    plt.show()
+
+def plot_area(*areas: Area):
+    fig = plt.figure()
+    ax = plt.axes(projection = "3d")
+    for area in areas:
+        x, y, z = generate_area(area)
+        ax.plot3D(x, y, z)
