@@ -28,13 +28,18 @@ def generate_area(area: Area):
     x = []
     y = []
     z = []
+    span_striaght1 = Straight3D(area.base_point, area.span_vector1)
+    span_striaght2 = Straight3D(area.base_point, area.span_vector2)
     for i in range(100): # Will be changeable later in development
-        new_point = area.point_is_on_area()
-        x.append(new_point.x)
-        y.append(new_point.y)
-        z.append(new_point.z)
+        temp_start_point = span_striaght1.point_on_straight(i)
+        for multi in range(100):
+            new_point = span_striaght2.point_on_straight(multi) +  temp_start_point
+            x.append(new_point.x)
+            y.append(new_point.y)
+            z.append(new_point.z)
     return [x, y, z]
 
+    
 def show_straight2D(*straights: Straight2D):
     for straight in straights:
         x, y = generate_straight2d(straight)
