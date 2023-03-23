@@ -71,7 +71,7 @@ class Vector3(Vector2):
         return Vector3(new_x, new_y, new_z)
     
 class Straight2D:
-    def __init__(self, base_point, direction) -> None:
+    def __init__(self, base_point : Vector2, direction: Vector2) -> None:
         self.base_point = base_point
         self.direction = direction
         
@@ -93,6 +93,9 @@ class Straight2D:
         return distance_vector.length()
     
 class Straight3D(Straight2D):
+    def __init__(self, base_point : Vector3, direction: Vector3) -> None:
+        self.base_point = base_point
+        self.direction = direction
         
     def convert_straight_to_equation(self):
         x_equation = "{}+{}x".format(self.base_point.x, self.direction.x)
@@ -101,7 +104,7 @@ class Straight3D(Straight2D):
         return [x_equation, y_equation, z_equation]
 
 class Area:
-    def __init__(self, base_point, span_vector1, span_vector2) -> None:
+    def __init__(self, base_point: Vector3, span_vector1: Vector3, span_vector2: Vector3) -> None:
         self.base_point = base_point
         self.span_vector1 = span_vector1
         self.span_vector2 = span_vector2
