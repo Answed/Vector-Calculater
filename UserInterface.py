@@ -27,7 +27,7 @@ def MainTab():
     new_vector3_value_L = tk.Label(main_tab, text="Enter the values from the vector 3")
     new_vector3_value_E = tk.Entry(main_tab, width=25, )
     new_vector3_value_E.insert(0, "(x|y|z)")
-    add_vector3_B = tk.Button(main_tab, text="Add Vector")
+    add_vector3_B = tk.Button(main_tab, text="Add Vector", command=lambda: DM.save_Vector3(new_vector3_name_E.get(), new_vector3_value_E.get()))
 
 
     new_vector2_name_L.grid(column=0, row=0)
