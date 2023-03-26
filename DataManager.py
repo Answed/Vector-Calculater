@@ -1,5 +1,6 @@
 from VectorClasses import *
 import re
+import ErrorMessages as EM
 
 saved_vector2_dic = {}
 saved_vector3_dic = {}
@@ -16,11 +17,11 @@ def create_vector3(value: str):
 def save_Vector2(name, value):
     if re.match(vector2_pattern, value):
         saved_vector2_dic[name] = create_vector2(value)
-    else: print("Something went wrong with your input")
+    else: EM.WrongInput("Something went wrong with your input\n keep in mind it has to be (number|number)")
 
 def save_Vector3(name, value):
     if re.match(vector3_pattern, value):
         saved_vector3_dic[name] = create_vector3(value)
-    else: print("Something went wrong with your input")
+    else: EM.WrongInput("Something went wrong with your input\n keep in mind it has to be (number|number|number)")
     
 

@@ -41,7 +41,6 @@ def MainTab():
     new_vector3_value_E.grid(column=1, row=4)
     add_vector3_B.grid(column=1, row=5)
 
-
 if __name__ == "__main__":
     MainTab()
     tabcontrol.pack(expand=1, fill="both")
