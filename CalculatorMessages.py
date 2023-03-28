@@ -10,3 +10,14 @@ def WrongInput(message: str):
 
     errorMessage_L.pack()
     closeWindow_B.pack()
+
+def Result(message: str):
+    newWindow = tk.Toplevel()
+    newWindow.title("Result")
+    newWindow.geometry("300x100")
+
+    errorMessage_L = tk.Label(newWindow, text=message)
+    closeWindow_B = tk.Button(newWindow, text="THX!", command=lambda: newWindow.destroy())
+
+    errorMessage_L.pack()
+    closeWindow_B.pack()
