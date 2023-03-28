@@ -1,5 +1,6 @@
 import tkinter as tk
 
+# Is used everythime something went wrong with an input.
 def WrongInput(message: str):
     newWindow = tk.Toplevel()
     newWindow.title("Error")
@@ -11,6 +12,7 @@ def WrongInput(message: str):
     errorMessage_L.pack()
     closeWindow_B.pack()
 
+# Will be used for displaying the results of a calculation.
 def Result(message: str):
     newWindow = tk.Toplevel()
     newWindow.title("Result")
