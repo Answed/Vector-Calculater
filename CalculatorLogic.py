@@ -26,7 +26,6 @@ class Node:
         else:
              self.data = data
 
-
 def generate_straight2d(straight: Straight2D):
     x = []
     y = []
