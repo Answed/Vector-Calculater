@@ -17,6 +17,7 @@ def create_vector3(value: str):
 def save_Vector2(name, value):
     if re.match(vector2_pattern, value):
         saved_vector2_dic[name] = create_vector2(value)
+        print(saved_vector2_dic)
     else: CM.WrongInput("Something went wrong with your input\n keep in mind it has to be (number|number)")
 
 def save_Vector3(name, value):

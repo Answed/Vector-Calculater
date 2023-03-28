@@ -19,24 +19,33 @@ class Visualize2D(tk.Frame):
 
         head_of_tab_L = tk.Label(self, text="This Tab is for visualaising 2D vectors")
         available_vectors_L = tk.Label(self, text="All available Vectors")
-        available_vectors = tk.Listbox(self)
+        self.available_vectors = tk.Listbox(self) # Has to be self. so i can use it later to actually add and remove the vectors from the list
         selected_vectors_L = tk.Label(self, text="All selected Vectors")
-        selected_vectors = tk.Listbox(self)
+        self.selected_vectors = tk.Listbox(self)  # Has to be self. so i can use it later to actually add and remove the vectors from the list
         add_vector_B = tk.Button(self, text="Add Vector")
         display_vector_B = tk.Button(self, text="Show selected \n vectors") 
 
         head_of_tab_L.grid(column=1, row=0)
         available_vectors_L.grid(column=0, row=1)
-        available_vectors.grid(column=0, row=2)
+        self.available_vectors.grid(column=0, row=2)
         add_vector_B.grid(column=0, row=3)
         selected_vectors_L.grid(column= 2, row=1)
-        selected_vectors.grid(column=2, row=2)
+        self.selected_vectors.grid(column=2, row=2)
         display_vector_B.grid(column=2, row=3)
+
+        self.load2DVectors()
+
+    def load2DVectors(self):
+        if (self.available_vectors.size() < len(DM.saved_vector2_dic)):
+            for vector in DM.saved_vector2_dic:
+                self.available_vectors.insert(tk.END ,vector)
+                self.after(1000, self.load2DVectors)
+        else:   self.after(1000, self.load2DVectors)
 
 
 def MainTab():
     tabcontrol.add(main_tab, text="Calculator") 
-    visualize2D = Visualize2D(main_Frame)
+    visualize2D = Visualize2D(tabcontrol)
 
     # UI needed for adding a Vector 2 to the list
     new_vector2_name_L = tk.Label(main_tab, text="Name of vector 2")
