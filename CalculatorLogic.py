@@ -26,6 +26,16 @@ class Node:
         else:
              self.data = data
 
+def generate_vector2D(vector: Vector2):
+    lenght = vector.length()
+    x = []
+    y = []
+    for i in range(lenght):
+        new_point = vector * i
+        x.append(new_point.x)
+        y.append(new_point.y)
+    return[x, y]
+
 def generate_straight2d(straight: Straight2D):
     x = []
     y = []
@@ -62,6 +72,11 @@ def generate_area(area: Area):
     return [x, y, z]
 
 # Used to plot all of the specifics made in the ui and display them at the same time.
+def plot_vector2D(*vectors: Vector2):
+    for vector in vectors:
+        x, y = generate_vector2D(vector)
+        plt.plot(x, y)
+
 def plot_straight2D(*straights: Straight2D):
     for straight in straights:
         x, y = generate_straight2d(straight)
