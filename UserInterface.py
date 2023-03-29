@@ -42,6 +42,36 @@ class Visualize2D(tk.Frame):
                 self.after(1000, self.load2DVectors)
         else:   self.after(1000, self.load2DVectors)
 
+class Visualize3D(tk.Frame):
+    def __init__(self, master = None):
+        super().__init__(master=master)
+        tabcontrol.add(self, text="3D Display")
+
+        head_of_tab_L = tk.Label(self, text="This Tab is for visualaising 3D vectors")
+        available_vectors_L = tk.Label(self, text="All available Vectors")
+        self.available_vectors = tk.Listbox(self) # Has to be self. so i can use it later to actually add and remove the vectors from the list
+        selected_vectors_L = tk.Label(self, text="All selected Vectors")
+        self.selected_vectors = tk.Listbox(self)  # Has to be self. so i can use it later to actually add and remove the vectors from the list
+        add_vector_B = tk.Button(self, text="Add Vector")
+        display_vector_B = tk.Button(self, text="Show selected \n vectors") 
+
+        head_of_tab_L.grid(column=1, row=0)
+        available_vectors_L.grid(column=0, row=1)
+        self.available_vectors.grid(column=0, row=2)
+        add_vector_B.grid(column=0, row=3)
+        selected_vectors_L.grid(column= 2, row=1)
+        self.selected_vectors.grid(column=2, row=2)
+        display_vector_B.grid(column=2, row=3)
+
+        self.load3DVectors()
+
+    def load3DVectors(self):
+        if (self.available_vectors.size() < len(DM.saved_vector3_dic)):
+            for vector in DM.saved_vector3_dic:
+                self.available_vectors.insert(tk.END ,vector)
+                self.after(1000, self.load3DVectors)
+        else:   self.after(1000, self.load3DVectors)
+
 
 def MainTab():
     tabcontrol.add(main_tab, text="Calculator") 
