@@ -10,7 +10,7 @@ def generate_vector2D(vector: Vector2):
     lenght = vector.length()
     x = []
     y = []
-    for i in range(lenght):
+    for i in range(int(lenght)):
         new_point = vector * i
         x.append(new_point.x)
         y.append(new_point.y)
@@ -75,3 +75,13 @@ def plot_area(*areas: Area):
     for area in areas:
         x, y, z = generate_area(area)
         ax.plot3D(x, y, z)
+
+def show2D(args):
+    for arg in args:
+        print(arg)
+        value = DM.saved_vector2_dic[str(arg)]
+        if (type(value) == Vector2):
+            plot_vector2D(value)
+        if(type(value) == Straight2D):
+            plot_straight2D(value)
+    plt.show()

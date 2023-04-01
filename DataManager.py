@@ -9,7 +9,7 @@ vector3_pattern = r"^\(\s*\d+\s*\|\s*\d+\s*\|\s*\d+\s*\)$"
 
 def  create_vector2(value: str):
     vector_values = re.findall(r"\d+", value)
-    return Vector2(vector_values[0], vector_values[1])
+    return Vector2(float(vector_values[0]), float(vector_values[1]))
 def create_vector3(value: str):
     vector_values = re.findall(r"\d+", value)
     return Vector3(vector_values[0], vector_values[1], vector_values[2])

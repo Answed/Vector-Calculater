@@ -23,7 +23,7 @@ class Visualize2D(tk.Frame):
         selected_vectors_L = tk.Label(self, text="All selected Vectors")
         self.selected_vectors = tk.Listbox(self)  # Has to be self. so i can use it later to actually add and remove the vectors from the list
         add_vector_B = tk.Button(self, text="Add Vector", command=lambda: self.add_vector())
-        display_vector_B = tk.Button(self, text="Show selected \n vectors") 
+        display_vector_B = tk.Button(self, text="Show selected \n vectors", command=lambda: Cl.show2D(self.selected_vectors.get(0, tk.END))) 
 
         head_of_tab_L.grid(column=1, row=0)
         available_vectors_L.grid(column=0, row=1)
