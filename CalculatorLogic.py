@@ -25,6 +25,18 @@ def generate_straight2d(straight: Straight2D):
         y.append(new_point.y)
     return [x, y]
 
+def generate_vector3D(vector: Vector3):
+    lenght = vector.length()
+    x = []
+    y = []
+    z = []
+    for i in range(int(lenght)):
+        new_point = vector * i
+        x.append(new_point.x)
+        y.append(new_point.y)
+        z.append(new_point.z)
+    return[x, y, z]
+
 def generate_straight3d(straight: Straight3D):
     x = []
     y = []
@@ -62,6 +74,13 @@ def plot_straight2D(*straights: Straight2D):
         x, y = generate_straight2d(straight)
         plt.plot(x, y)
 
+def plot_vector3D(*vectors: Vector3):
+    fig = plt.figure()
+    ax = plt.axes(projection = "3d")
+    for vector in vectors:
+        x, y, z = generate_vector2D(vector)
+        plt.plot(x, y, z)
+
 def plot_straight3D(*straights: Straight3D):
     fig = plt.figure()
     ax = plt.axes(projection = "3d")
@@ -78,10 +97,20 @@ def plot_area(*areas: Area):
 
 def show2D(args):
     for arg in args:
-        print(arg)
-        value = DM.saved_vector2_dic[str(arg)]
+        value = DM.saved_vector2_dic[arg]
         if (type(value) == Vector2):
             plot_vector2D(value)
         if(type(value) == Straight2D):
             plot_straight2D(value)
+    plt.show()
+
+def show3D(args):
+    for arg in args:
+        value = DM.saved_vector3_dic[arg]
+        if(type(value) == Vector3):
+            plot_vector3D(value)
+        if(type(value) == Straight3D):
+            plot_straight3D
+        if(type(value) == Area):
+            plot_area(value)
     plt.show()
