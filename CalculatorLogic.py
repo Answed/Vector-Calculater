@@ -64,36 +64,31 @@ def generate_area(area: Area):
     return [x, y, z]
 
 # Used to plot all of the specifics made in the ui and display them at the same time.
-def plot_vector2D(*vectors: Vector2):
-    for vector in vectors:
-        x, y = generate_vector2D(vector)
-        plt.plot(x, y)
+def plot_vector2D(vector: Vector2):
+    x, y = generate_vector2D(vector)
+    plt.plot(x, y)
 
-def plot_straight2D(*straights: Straight2D):
-    for straight in straights:
-        x, y = generate_straight2d(straight)
-        plt.plot(x, y)
+def plot_straight2D(straight: Straight2D):
+    x, y = generate_straight2d(straight)
+    plt.plot(x, y)
 
-def plot_vector3D(*vectors: Vector3):
+def plot_vector3D(*vector: Vector3):
     fig = plt.figure()
     ax = plt.axes(projection = "3d")
-    for vector in vectors:
-        x, y, z = generate_vector2D(vector)
-        plt.plot(x, y, z)
+    x, y, z = generate_vector2D(vector)
+    plt.plot(x, y, z)
 
-def plot_straight3D(*straights: Straight3D):
+def plot_straight3D(straight: Straight3D):
     fig = plt.figure()
     ax = plt.axes(projection = "3d")
-    for straight in straights:
-        x, y, z = generate_straight3d(straight)
-        ax.plot3D(x, y, z)
+    x, y, z = generate_straight3d(straight)
+    ax.plot3D(x, y, z)
 
-def plot_area(*areas: Area):
+def plot_area(area: Area):
     fig = plt.figure()
     ax = plt.axes(projection = "3d")
-    for area in areas:
-        x, y, z = generate_area(area)
-        ax.plot3D(x, y, z)
+    x, y, z = generate_area(area)
+    ax.plot3D(x, y, z)
 
 def show2D(args):
     for arg in args:
