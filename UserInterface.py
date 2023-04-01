@@ -74,8 +74,8 @@ class Visualize3D(tk.Frame):
             for vector in DM.saved_vector2_dic:
                 if not vector in self.available_vectors.get(0, tk.END):
                     self.available_vectors.insert(tk.END ,vector)
-                    self.after(1000, self.load2DVectors)
-        else:   self.after(1000, self.load2DVectors)
+                    self.after(1000, self.load3DVectors)
+        else:   self.after(1000, self.load3DVectors)
     
     def add_vector(self):
         self.selected_vectors.insert(tk.END, self.available_vectors.get(tk.ANCHOR))
@@ -83,6 +83,7 @@ class Visualize3D(tk.Frame):
 def MainTab():
     tabcontrol.add(main_tab, text="Calculator") 
     visualize2D = Visualize2D(tabcontrol)
+    visualize3D = Visualize3D(tabcontrol)
 
     # UI needed for adding a Vector 2 to the list
     new_vector2_name_L = tk.Label(main_tab, text="Name of vector 2")
