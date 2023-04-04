@@ -81,7 +81,7 @@ class Visualize3D(tk.Frame):
         self.selected_vectors.insert(tk.END, self.available_vectors.get(tk.ANCHOR))
 
 def MainTab():
-    tabcontrol.add(main_tab, text="Calculator") 
+    tabcontrol.add(main_tab, text="Creator") 
     visualize2D = Visualize2D(tabcontrol)
     visualize3D = Visualize3D(tabcontrol)
 
