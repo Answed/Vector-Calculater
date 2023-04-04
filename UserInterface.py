@@ -101,6 +101,13 @@ def MainTab():
     new_vector3_value_E.insert(0, "(x|y|z)")
     add_vector3_B = tk.Button(main_tab, text="Add Vector", command=lambda: DM.save_Vector3(new_vector3_name_E.get(), new_vector3_value_E.get()))
 
+    # UI needed for adding a Straight 2D to the list
+    new_straight2D_name_L = tk.Label(main_tab, text="Name of Straight 2D")
+    new_straight2D_name_E =  tk.Entry(main_tab, width=25)
+    new_straight2D_value_L = tk.Label(main_tab, text="Enter the values from the Straight2D\n It can be either the name of an Vector2D or just the values of a new Vector2D")
+    new_straight2D_value_E = tk.Entry(main_tab, width=25) 
+    add_straight2D_B = tk.Button(main_tab, text="Add Straight")
+
     new_vector2_name_L.grid(column=0, row=0)
     new_vector2_name_E.grid(column=1, row=0)
     new_vector2_value_L.grid(column=0, row=1)
