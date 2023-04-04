@@ -6,7 +6,7 @@ def WrongInput(message: str):
     newWindow.title("Error")
     newWindow.geometry("300x100")
 
-    errorMessage_L = tk.Label(newWindow, text=message)
+    errorMessage_L = tk.Label(newWindow, text="Something went wrong with your input\n" + message)
     closeWindow_B = tk.Button(newWindow, text="OK!", command=lambda: newWindow.destroy())
 
     errorMessage_L.pack()
