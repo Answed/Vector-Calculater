@@ -3,7 +3,7 @@ import re
 import CalculatorMessages as CM
 
 saved_2D_dic = {}
-saved_vector3_dic = {}
+saved_3D_dic = {}
 vector2_pattern = r"\(\s*\d+\s*\|\s*\d+\s*\)"
 vector3_pattern = r"^\(\s*\d+\s*\|\s*\d+\s*\|\s*\d+\s*\)$"
 name_pattern = r"\b\w{2,}\b" #  Pattern to find a name in an Input
@@ -40,7 +40,7 @@ def save_Straight2D(name, value):
 
 def save_Vector3(name, value):
     if re.match(vector3_pattern, value):
-        saved_vector3_dic[name] = create_vector3(value)
+        saved_3D_dic[name] = create_vector3(value)
     else: CM.WrongInput("keep in mind it has to be (number|number|number)")
     
 def find_vector(kind_of_Vector, name_of_vector):
@@ -49,7 +49,7 @@ def find_vector(kind_of_Vector, name_of_vector):
             case "Vector2":
                return saved_2D_dic[name_of_vector]
             case "Vector3":
-               return saved_vector3_dic[name_of_vector]
+               return saved_3D_dic[name_of_vector]
     except KeyError:
         CM.WrongInput("That Vector does not exist")
     finally:
