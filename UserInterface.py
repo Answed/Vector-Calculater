@@ -99,7 +99,7 @@ def MainTab():
     new_straight2D_value_L = tk.Label(main_tab, text="Enter the values from the Straight2D\n It can be either the name of an Vector2D or\n just the values of a new Vector2D -> (x|y)")
     new_straight2D_value_E = tk.Entry(main_tab, width=25)
     new_straight2D_value_E.insert(0, "(vector) + (vector)") 
-    add_straight2D_B = tk.Button(main_tab, text="Add Straight")
+    add_straight2D_B = tk.Button(main_tab, text="Add Straight", command=lambda: DM.save_Straight2D(new_straight2D_name_E.get(), new_straight2D_value_E.get()))
 
 
     # UI needed for adding a Vector 3 to the list
