@@ -37,7 +37,7 @@ def create_straight2D(matches):
 
 def create_vector3(value: str):
     vector_values = re.findall(r"\d+", value)
-    return Vector3(vector_values[0], vector_values[1], vector_values[2])
+    return Vector3(float(vector_values[0]), float(vector_values[1]), float(vector_values[2]))
 
 def create_straight3D(matches):
     tempVectors = FindOrCreate_3D_vectors(matches)
@@ -45,6 +45,7 @@ def create_straight3D(matches):
     
 def create_area(matches):
     tempVectors = FindOrCreate_3D_vectors(matches)
+    print(tempVectors)
     return Area(tempVectors[0], tempVectors[1], tempVectors[2])
 
 def save_Vector2(name, value):
@@ -70,9 +71,9 @@ def save_Straight3D(name, value):
     else: CM.WrongInput("Check your Inputs again")  
 
 def save_Area(name, value):
-    matches = re.findall(name_pattern + "|" + vector3_pattern)
+    matches = re.findall(name_pattern + "|" + vector3_pattern, value)
     if (len(matches) == 3):
-        saved_3D_dic[name] = create_area(value)
+        saved_3D_dic[name] = create_area(matches)
     else: CM.WrongInput("Check your Inputs again")  
 
 def find_vector(kind_of_Vector, name_of_vector):

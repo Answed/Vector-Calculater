@@ -101,11 +101,11 @@ def show2D(args):
 
 def show3D(args):
     for arg in args:
-        value = DM.saved_vector3_dic[arg]
+        value = DM.saved_3D_dic[arg]
         if(type(value) == Vector3):
             plot_vector3D(value)
         if(type(value) == Straight3D):
-            plot_straight3D
+            plot_straight3D(value)
         if(type(value) == Area):
             plot_area(value)
     plt.show()
