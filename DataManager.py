@@ -38,11 +38,14 @@ def save_Straight2D(name, value):
         saved_2D_dic[name] = create_straight2D(matches)
     else: CM.WrongInput("Check your Inputs again")    
 
-def save_Vector3(name, value):
+def save_Vector3D(name, value):
     if re.match(vector3_pattern, value):
         saved_3D_dic[name] = create_vector3(value)
     else: CM.WrongInput("keep in mind it has to be (number|number|number)")
-    
+
+def save_Straight3D(name, value):
+    print()
+
 def find_vector(kind_of_Vector, name_of_vector):
     try:
         match kind_of_Vector:
