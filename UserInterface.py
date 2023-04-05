@@ -56,7 +56,7 @@ class Visualize3D(tk.Frame):
         self.available_vectors = tk.Listbox(self) # Has to be self. so i can use it later to actually add and remove the vectors from the list
         selected_vectors_L = tk.Label(self, text="All selected Vectors")
         self.selected_vectors = tk.Listbox(self)  # Has to be self. so i can use it later to actually add and remove the vectors from the list
-        add_vector_B = tk.Button(self, text="Add Vector")
+        add_vector_B = tk.Button(self, text="Add Vector", command=lambda: self.add_vector())
         display_vector_B = tk.Button(self, text="Show selected \n vectors", command=lambda: Cl.show3D(self.selected_vectors.get(0, tk.END))) 
 
         head_of_tab_L.grid(column=1, row=0)
@@ -70,7 +70,7 @@ class Visualize3D(tk.Frame):
         self.load3DVectors()
 
     def load3DVectors(self):
-        if (self.available_vectors.size() < len(DM.saved_2D_dic)):
+        if (self.available_vectors.size() < len(DM.saved_3D_dic)):
             for vector in DM.saved_3D_dic:
                 if not vector in self.available_vectors.get(0, tk.END):
                     self.available_vectors.insert(tk.END ,vector)
