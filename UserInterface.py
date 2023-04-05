@@ -108,7 +108,7 @@ def MainTab():
     new_vector3_value_L = tk.Label(main_tab, text="Enter the values from the vector 3")
     new_vector3_value_E = tk.Entry(main_tab, width=25, )
     new_vector3_value_E.insert(0, "(x|y|z)")
-    add_vector3_B = tk.Button(main_tab, text="Add Vector", command=lambda: DM.save_Vector3(new_vector3_name_E.get(), new_vector3_value_E.get()))
+    add_vector3_B = tk.Button(main_tab, text="Add Vector", command=lambda: DM.save_Vector3D(new_vector3_name_E.get(), new_vector3_value_E.get()))
 
     # UI for adding a Straight3D to the list
     new_straight3D_name_L = tk.Label(main_tab, text="Name of the Straight 3D")
