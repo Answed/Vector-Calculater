@@ -6,7 +6,7 @@ import DataManager as DM
 
 main_Frame = tk.Tk()
 main_Frame.title("Vector Calculator")
-main_Frame.geometry("480x270")
+main_Frame.geometry("480x470")
 
 tabcontrol = ttk.Notebook(main_Frame)
 
@@ -85,38 +85,46 @@ def MainTab():
     visualize2D = Visualize2D(tabcontrol)
     visualize3D = Visualize3D(tabcontrol)
 
-    # UI needed for adding a Vector 2 to the list
-    new_vector2_name_L = tk.Label(main_tab, text="Name of vector 2")
+    # UI for adding a Vector 2 to the list
+    new_vector2_name_L = tk.Label(main_tab, text="Name of the vector 2")
     new_vector2_name_E = tk.Entry(main_tab, width=25)
     new_vector2_value_L = tk.Label(main_tab, text="Enter the values from the vector 2")
     new_vector2_value_E = tk.Entry(main_tab, width=25)
     new_vector2_value_E.insert(0, "(x|y)")
     add_vector2_B = tk.Button(main_tab, text="Add Vector", command=lambda: DM.save_Vector2(new_vector2_name_E.get(), new_vector2_value_E.get()))
 
-    # UI needed for adding a Straight 2D to the list
-    new_straight2D_name_L = tk.Label(main_tab, text="Name of Straight 2D")
+    # UI for adding a Straight 2D to the list
+    new_straight2D_name_L = tk.Label(main_tab, text="Name of the Straight 2D")
     new_straight2D_name_E =  tk.Entry(main_tab, width=25)
-    new_straight2D_value_L = tk.Label(main_tab, text="Enter the values for the Straight2D\n It can be either the name of an Vector2D or\n just the values of a new Vector2D -> (x|y)")
+    new_straight2D_value_L = tk.Label(main_tab, text="Enter the values for the Straight2D\n It either can be the name of an Vector2D or\n just the values of a new Vector2D -> (x|y)")
     new_straight2D_value_E = tk.Entry(main_tab, width=25)
     new_straight2D_value_E.insert(0, "(vector) + (vector)") 
     add_straight2D_B = tk.Button(main_tab, text="Add Straight", command=lambda: DM.save_Straight2D(new_straight2D_name_E.get(), new_straight2D_value_E.get()))
 
 
-    # UI needed for adding a Vector 3 to the list
-    new_vector3_name_L = tk.Label(main_tab, text="Name of vector 3")
+    # UI for adding a Vector 3 to the list
+    new_vector3_name_L = tk.Label(main_tab, text="Name of the vector 3")
     new_vector3_name_E = tk.Entry(main_tab, width=25)
     new_vector3_value_L = tk.Label(main_tab, text="Enter the values from the vector 3")
     new_vector3_value_E = tk.Entry(main_tab, width=25, )
     new_vector3_value_E.insert(0, "(x|y|z)")
     add_vector3_B = tk.Button(main_tab, text="Add Vector", command=lambda: DM.save_Vector3(new_vector3_name_E.get(), new_vector3_value_E.get()))
 
-    # UI needed for adding a Straight3D to the list
-    new_straight3D_name_L = tk.Label(main_tab, text="Name of Straight 3D")
+    # UI for adding a Straight3D to the list
+    new_straight3D_name_L = tk.Label(main_tab, text="Name of the Straight 3D")
     new_straight3D_name_E = tk.Entry(main_tab, width=25)
-    new_straight3D_value_L = tk.Label(main_tab, text="Enter the values for the Straight3D\n It can be either the name of an Vector3D or\n just the values of a new Vector3D -> (x|y|z)")
+    new_straight3D_value_L = tk.Label(main_tab, text="Enter the values for the Straight3D\n It either can be the name of an Vector3D or\n just the values of a new Vector3D -> (x|y|z)")
     new_straight3D_value_E = tk.Entry(main_tab, width=25)
     new_straight2D_value_E.insert(0, "(vector) + (vector)")
     add_straight3D_B = tk.Button(main_tab, text="Add Straight", command=lambda: DM.save_Straight3D(new_straight3D_name_E.get(), new_straight3D_value_E.get()))
+
+    # UI or adding Areas to the list
+    new_area_name_L = tk.Label(main_tab, text="Name of the area")
+    new_area_name_E = tk.Entry(main_tab, width=25)
+    new_area_value_L = tk.Label(main_tab, text="Enter the values for the Area\n It either can be the name of an Vector3D or\n just the values of a new Vector3D -> (x|y|z)")
+    new_area_value_E = tk.Entry(main_tab, width=25)
+    new_area_value_E.insert(0, "(vector) + (vector) + (vector)")
+    add_area_B = tk.Button(main_tab, text="Add Area", command=lambda: DM.save_Area(new_area_name_E.get(), new_area_value_E.get()))
 
     new_vector2_name_L.grid(column=0, row=0)
     new_vector2_name_E.grid(column=1, row=0)
@@ -141,6 +149,12 @@ def MainTab():
     new_straight3D_value_L.grid(column=0, row=10)
     new_straight3D_value_E.grid(column=1, row=10)
     add_straight3D_B.grid(column=1, row=11)
+
+    new_area_name_L.grid(column=0, row=12)
+    new_area_name_E.grid(column=1, row=12)
+    new_area_value_L.grid(column=0, row=13)
+    new_area_value_E.grid(column=1, row=13)
+    add_area_B.grid(column=1, row=14)
 
 
 if __name__ == "__main__":
