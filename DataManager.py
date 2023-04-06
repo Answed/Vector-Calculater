@@ -15,7 +15,10 @@ def FindOrCreate_3D_vectors(vectors):
             found_vectors.append(create_vector3(vector))
         else : 
             try:
-                found_vectors.append(saved_3D_dic[vector])
+                if (type(saved_3D_dic[vector]) == Straight3D):
+                    found_vectors.append(saved_3D_dic[vector].base_point)
+                    found_vectors.append(saved_3D_dic[vector].direction)
+                else: found_vectors.append(saved_3D_dic[vector])
             except(KeyError): CM.WrongInput("This Vector doesn't exist")
     return found_vectors
 
@@ -72,7 +75,7 @@ def save_Straight3D(name, value):
 
 def save_Area(name, value):
     matches = re.findall(name_pattern + "|" + vector3_pattern, value)
-    if (len(matches) == 3):
+    if (len(matches) == 3 or len(matches) == 2):
         saved_3D_dic[name] = create_area(matches)
     else: CM.WrongInput("Check your Inputs again")  
 
