@@ -81,15 +81,3 @@ def save_Area(name, value):
     if (len(matches) == 3 or len(matches) == 2):
         saved_3D_dic[name] = create_area(matches)
     else: CM.WrongInput("Check your Inputs again")  
-
-def find_vector(kind_of_Vector, name_of_vector):
-    try:
-        match kind_of_Vector:
-            case "Vector2":
-               return saved_2D_dic[name_of_vector]
-            case "Vector3":
-               return saved_3D_dic[name_of_vector]
-    except KeyError:
-        CM.WrongInput("That Vector does not exist")
-    finally:
-        return 0
