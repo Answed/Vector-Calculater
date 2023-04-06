@@ -5,7 +5,6 @@ from mpl_toolkits import mplot3d
 import numpy as np
 import DataManager as DM
 
-
 def generate_vector2D(vector: Vector2):
     lenght = vector.length()
     x = []
@@ -109,3 +108,6 @@ def show3D(args):
         if(type(value) == Area):
             plot_area(value)
     plt.show()
+
+def calculate_angel(vector1, vector2):
+    tempVectors = [vector1, vector2]

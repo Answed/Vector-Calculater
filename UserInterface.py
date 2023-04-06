@@ -80,10 +80,24 @@ class Visualize3D(tk.Frame):
     def add_vector(self):
         self.selected_vectors.insert(tk.END, self.available_vectors.get(tk.ANCHOR))
 
+class Calculator(tk.Frame):
+    def __init__(self, master = None):
+        super().__init__(master=master)
+        tabcontrol.add(self, text="Calculator")
+    
+        angle_between_vectors_L = tk.Label(self, text="Angle between two vectors.\n Vectors have to be of the same type\n Vectors can also be enterd in (x|y) or (x|y|z)")
+        angle_between_vectors_E = tk.Entry(self, width=25)
+        angle_between_vectors_E.insert(0, "vector1 + vector2")
+        calculate_angle_B = tk.Button(self, text="Calculate angel")
+
+        angle_between_vectors_L.grid(column=0, row=0)
+        angle_between_vectors_E.grid(column=1, row=0)
+
 def MainTab():
     tabcontrol.add(main_tab, text="Creator") 
     visualize2D = Visualize2D(tabcontrol)
     visualize3D = Visualize3D(tabcontrol)
+    calculator = Calculator(tabcontrol)
 
     # UI for adding a Vector 2 to the list
     new_vector2_name_L = tk.Label(main_tab, text="Name of the vector 2")
