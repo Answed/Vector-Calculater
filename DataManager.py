@@ -8,6 +8,18 @@ vector2_pattern = r"\(\s*\d+\s*\|\s*\d+\s*\)"
 vector3_pattern = r"\(\s*\d+\s*\|\s*\d+\s*\|\s*\d+\s*\)"
 name_pattern = r"\b\w{2,}\b" #  Pattern to find a name in an Input
 
+def FindOrCreate_2D_vectors(vectors):
+    found_vectors = []
+    for vector in vectors:
+        if re.match(vector2_pattern, vector):
+            found_vectors.append(create_vector2(vector))
+        else : 
+            try:
+                print(vector)
+                found_vectors.append(saved_2D_dic[vector])
+            except(KeyError): CM.WrongInput("This Vector doesn't exist")
+    return found_vectors
+
 def FindOrCreate_3D_vectors(vectors):
     found_vectors = []
     for vector in vectors:
@@ -27,15 +39,7 @@ def  create_vector2(value: str):
     return Vector2(float(vector_values[0]), float(vector_values[1]))
 
 def create_straight2D(matches):
-    tempVectors = []
-    for match in matches:
-        if re.match(vector2_pattern, match):
-            tempVectors.append(create_vector2(match))
-        else : 
-            try:
-                print(match)
-                tempVectors.append(saved_2D_dic[match])
-            except(KeyError): CM.WrongInput("This Vector doesn't exist")
+    tempVectors = FindOrCreate_2D_vectors(matches)
     return Straight2D(tempVectors[0], tempVectors[1])
 
 def create_vector3(value: str):
@@ -48,7 +52,6 @@ def create_straight3D(matches):
     
 def create_area(matches):
     tempVectors = FindOrCreate_3D_vectors(matches)
-    print(tempVectors)
     return Area(tempVectors[0], tempVectors[1], tempVectors[2])
 
 def save_Vector2(name, value):
