@@ -8,6 +8,13 @@ vector2_pattern = r"\(\s*\d+\s*\|\s*\d+\s*\)"
 vector3_pattern = r"\(\s*\d+\s*\|\s*\d+\s*\|\s*\d+\s*\)"
 name_pattern = r"\b\w{2,}\b" #  Pattern to find a name in an Input
 
+def varify_Vectors(vectors):
+    sameType = False
+    for i in range(len(vectors) - 2):  # -2 Because we dont want to go through the last object of the list
+        if(type(vectors[i]) == type(vectors[i+1])): sameType = True
+        else: sameType = False
+    return sameType
+
 def FindOrCreate_2D_vectors(vectors):
     found_vectors = []
     for vector in vectors:
