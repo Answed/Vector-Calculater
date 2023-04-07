@@ -88,10 +88,11 @@ class Calculator(tk.Frame):
         angle_between_vectors_L = tk.Label(self, text="Angle between two vectors.\n Vectors have to be of the same type\n Vectors can also be enterd in (x|y) or (x|y|z)")
         angle_between_vectors_E = tk.Entry(self, width=25)
         angle_between_vectors_E.insert(0, "vector1 + vector2")
-        calculate_angle_B = tk.Button(self, text="Calculate angel")
+        calculate_angle_B = tk.Button(self, text="Calculate angel", command=lambda: Cl.calculate_angel(angle_between_vectors_E.get()))
 
         angle_between_vectors_L.grid(column=0, row=0)
         angle_between_vectors_E.grid(column=1, row=0)
+        calculate_angle_B.grid(column=1, row=1)
 
 def MainTab():
     tabcontrol.add(main_tab, text="Creator") 

@@ -1,5 +1,5 @@
 import math as mt
-
+import CalculatorMessages as CM
 # Describes a vector with two dimensions.
 class Vector2:
     def __init__(self, xValue, yValue) -> None:
@@ -32,7 +32,10 @@ class Vector2:
         return self.x * other.y - self.y - other.x
     def angle_between_vectors(self, other):
         scalar_product = self.scalar_product(other)
-        angle = mt.acos(scalar_product/(self.length() * other.length()))
+        try:
+            angle = mt.acos(scalar_product/(self.length() * other.length()))
+        except(ValueError):
+            CM.WrongInput("The values from your inputs are to high.\n Try a smaller version of them!")
         return mt.degrees(angle)
 
 class Vector3(Vector2):

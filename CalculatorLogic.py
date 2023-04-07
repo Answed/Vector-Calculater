@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
 import numpy as np
 import DataManager as DM
+import CalculatorMessages as CM
 
 def generate_vector2D(vector: Vector2):
     lenght = vector.length()
@@ -109,5 +110,7 @@ def show3D(args):
             plot_area(value)
     plt.show()
 
-def calculate_angel(vector1, vector2):
-    tempVectors = [vector1, vector2]
+def calculate_angel(vectors):
+    vectors = DM.FindVectorsInInput(vectors)
+    if (DM.varify_Vectors(vectors)):
+        CM.Result("The angle between the vector {} and {}\n is {}".format(vectors[0], vectors[1], vectors[0].angle_between_vectors(vectors[1])))
