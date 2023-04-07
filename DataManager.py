@@ -15,7 +15,6 @@ def FindOrCreate_2D_vectors(vectors):
             found_vectors.append(create_vector2(vector))
         else : 
             try:
-                print(vector)
                 found_vectors.append(saved_2D_dic[vector])
             except(KeyError): CM.WrongInput("This Vector doesn't exist")
     return found_vectors
@@ -33,6 +32,24 @@ def FindOrCreate_3D_vectors(vectors):
                 else: found_vectors.append(saved_3D_dic[vector])
             except(KeyError): CM.WrongInput("This Vector doesn't exist")
     return found_vectors
+
+def FindVectorsInInput(input):
+    matches = re.findall(name_pattern + "|" + vector3_pattern + "|" + vector2_pattern, input)
+    found_vectors = []
+    if (len(matches) < 2):
+        CM.WrongInput("Check your Inputs again")
+    else: 
+        for vector in matches:
+            if re.match(vector2_pattern, vector):
+                found_vectors.append(create_vector2(vector))
+            elif re.match(vector3_pattern, vector):
+                found_vectors.append(create_vector3(vector))
+            else: 
+                try:
+                    found_vectors.append(saved_2D_dic[vector])
+                    found_vectors.append(saved_3D_dic[vector])
+                except(KeyError): print("One of the options is not available")
+        return found_vectors
 
 def  create_vector2(value: str):
     vector_values = re.findall(r"\d+", value)
