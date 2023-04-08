@@ -84,15 +84,23 @@ class Calculator(tk.Frame):
     def __init__(self, master = None):
         super().__init__(master=master)
         tabcontrol.add(self, text="Calculator")
-    
+
+        add_vectors_L = tk.Label(self, text="Add multiple Vectors to one\n you can use the name or just (x|y) / (x|y|z)")
+        add_vectors_E = tk.Entry(self, width=25)
+        calculate_sum_B = tk.Button(self, text="Calculate Vector")
+
         angle_between_vectors_L = tk.Label(self, text="Angle between two vectors.\n Vectors have to be of the same type\n Vectors can also be enterd in (x|y) or (x|y|z)")
         angle_between_vectors_E = tk.Entry(self, width=25)
         angle_between_vectors_E.insert(0, "vector1 + vector2")
         calculate_angle_B = tk.Button(self, text="Calculate angel", command=lambda: Cl.calculate_angel(angle_between_vectors_E.get()))
 
-        angle_between_vectors_L.grid(column=0, row=0)
-        angle_between_vectors_E.grid(column=1, row=0)
-        calculate_angle_B.grid(column=1, row=1)
+        add_vectors_L.grid(column=0, row=0)
+        add_vectors_E.grid(column=1, row=0)
+        calculate_sum_B.grid(column=1, row=1)
+
+        angle_between_vectors_L.grid(column=0, row=2)
+        angle_between_vectors_E.grid(column=1, row=2)
+        calculate_angle_B.grid(column=1, row=3)
 
 def MainTab():
     tabcontrol.add(main_tab, text="Creator") 
