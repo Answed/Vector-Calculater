@@ -87,7 +87,7 @@ class Calculator(tk.Frame):
 
         add_vectors_L = tk.Label(self, text="Add multiple Vectors to one\n you can use the name or just (x|y) / (x|y|z)")
         add_vectors_E = tk.Entry(self, width=25)
-        calculate_sum_B = tk.Button(self, text="Calculate Vector")
+        calculate_sum_B = tk.Button(self, text="Calculate Vector", command=lambda: Cl.calculate_sum(add_vectors_E.get()))
 
         angle_between_vectors_L = tk.Label(self, text="Angle between two vectors.\n Vectors have to be of the same type\n Vectors can also be enterd in (x|y) or (x|y|z)")
         angle_between_vectors_E = tk.Entry(self, width=25)
