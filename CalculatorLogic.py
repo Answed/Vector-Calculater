@@ -117,6 +117,7 @@ def calculate_angel(vectors):
 
 def calculate_sum(vectors):
     vectors = DM.FindVectorsInInput(vectors)
-    for i in range(1, len(vectors)):
-        vectors[0] += vectors[i]
-    CM.Result("The sum of the vectors is {}".format(vectors[0]) )
+    if(DM.varify_Vectors(vectors)):
+        for i in range(1, len(vectors)):
+            vectors[0] += vectors[i]
+        CM.Result("The sum of the vectors is {}".format(vectors[0]))
