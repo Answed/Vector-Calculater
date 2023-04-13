@@ -103,10 +103,10 @@ class Calculator(tk.Frame):
         calculate_angle_B.grid(column=1, row=3)
 
 def MainTab():
-    tabcontrol.add(main_tab, text="Creator") 
+    tabcontrol.add(main_tab, text="Creator")
+    calculator = Calculator(tabcontrol) 
     visualize2D = Visualize2D(tabcontrol)
     visualize3D = Visualize3D(tabcontrol)
-    calculator = Calculator(tabcontrol)
 
     # UI for adding a Vector 2 to the list
     new_vector2_name_L = tk.Label(main_tab, text="Name of the vector 2")
