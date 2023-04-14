@@ -94,6 +94,10 @@ class Calculator(tk.Frame):
         angle_between_vectors_E.insert(0, "vector1 + vector2")
         calculate_angle_B = tk.Button(self, text="Calculate angel", command=lambda: Cl.calculate_angel(angle_between_vectors_E.get()))
 
+        distance_between_straights_L = tk.Label(self, text="Distance between straights")
+        distance_between_straights_E = tk.Entry(self, width=25)
+        calculate_distance_B = tk.Button(self, text="Calculate distance")
+
         add_vectors_L.grid(column=0, row=0)
         add_vectors_E.grid(column=1, row=0)
         calculate_sum_B.grid(column=1, row=1)
