@@ -96,7 +96,8 @@ class Calculator(tk.Frame):
 
         distance_between_straights_L = tk.Label(self, text="Distance between straights")
         distance_between_straights_E = tk.Entry(self, width=25)
-        calculate_distance_B = tk.Button(self, text="Calculate distance")
+        distance_between_straights_E.insert(0, "straight1 - straight2")
+        calculate_distance_B = tk.Button(self, text="Calculate distance", command=lambda: Cl.calculate_distance(distance_between_straights_E.get()))
 
         add_vectors_L.grid(column=0, row=0)
         add_vectors_E.grid(column=1, row=0)
@@ -105,6 +106,10 @@ class Calculator(tk.Frame):
         angle_between_vectors_L.grid(column=0, row=2)
         angle_between_vectors_E.grid(column=1, row=2)
         calculate_angle_B.grid(column=1, row=3)
+
+        distance_between_straights_L.grid(column=0, row=4)
+        distance_between_straights_E.grid(column=1, row=4)
+        calculate_distance_B.grid(column=1, row=5)
 
 def MainTab():
     tabcontrol.add(main_tab, text="Creator")

@@ -121,3 +121,8 @@ def calculate_sum(vectors):
         for i in range(1, len(vectors)):
             vectors[0] += vectors[i]
         CM.Result("The sum of the vectors is {}".format(vectors[0]))
+
+def calculate_distance(vectors):
+    vectors = DM.FindVectorsInInput(vectors)
+    if(DM.varify_Vectors(vectors)):
+        CM.Result("The distance between the straight {} and {}\n is {}".format(vectors[0], vectors[1], vectors[0].distance_between_straights(vectors[1])))
