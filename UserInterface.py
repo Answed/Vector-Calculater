@@ -102,7 +102,7 @@ class Calculator(tk.Frame):
         point_on_area_L = tk.Label(self, text="Calculates if a point is on a straight or area\nEnter the name of the Area or Straight and the vector as name or use (x|y)...")
         point_on_area_E = tk.Entry(self, width=25)
         point_on_area_E.insert(0, "NameOfArea/Straight + point")
-        check_if_point_is_in_it = tk.Button(self, text="Check if point\n is in it")
+        check_if_point_is_in_it = tk.Button(self, text="Check if point\n is in it", command=lambda: Cl.check_point(point_on_area_E.get()))
 
 
         add_vectors_L.grid(column=0, row=0)
