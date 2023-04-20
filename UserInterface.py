@@ -99,9 +99,9 @@ class Calculator(tk.Frame):
         distance_between_straights_E.insert(0, "straight1 - straight2")
         calculate_distance_B = tk.Button(self, text="Calculate distance", command=lambda: Cl.calculate_distance(distance_between_straights_E.get()))
 
-        point_on_straightarea_L = tk.Label(self, text="Calculates if a point is on a straight or area\nEnter the name of the Area or Straight and the vector as name or use (x|y)...")
-        point_on_straightarea_E = tk.Entry(self, width=25)
-        point_on_straightarea_E.insert(0, "NameOfArea/Straight + point")
+        point_on_area_L = tk.Label(self, text="Calculates if a point is on a straight or area\nEnter the name of the Area or Straight and the vector as name or use (x|y)...")
+        point_on_area_E = tk.Entry(self, width=25)
+        point_on_area_E.insert(0, "NameOfArea/Straight + point")
         check_if_point_is_in_it = tk.Button(self, text="Check if point\n is in it")
 
 
@@ -117,8 +117,8 @@ class Calculator(tk.Frame):
         distance_between_straights_E.grid(column=1, row=4)
         calculate_distance_B.grid(column=1, row=5)
 
-        point_on_straightarea_L.grid(column=0, row=6)
-        point_on_straightarea_E.grid(column=1, row=6)
+        point_on_area_L.grid(column=0, row=6)
+        point_on_area_E.grid(column=1, row=6)
         check_if_point_is_in_it.grid(column=1, row=7)
 
 def MainTab():

@@ -115,9 +115,8 @@ class Area:
 
     def point_is_on_area(self, point): # Basically is it the normal form from the area equation
         temp_point = point - self.base_point
-        if (temp_point.scalar_product(self.normal_vector()) == 0): 
-            print("Is on Area") # Will be changed later for more complex use cases but for now this is enough
-        else: print("Is not on Area")
+        if (temp_point.scalar_product(self.normal_vector()) == 0):return True
+        else: return False
 
     def coordinate_form(self): # Is used to calculate the value the equasion has to have in oder that the end result is right
         return self.normal_vector.scalar_product(self.base_point)
