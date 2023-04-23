@@ -2,8 +2,7 @@ from VectorClasses import *
 import re
 import CalculatorMessages as CM
 
-saved_2D_dic = {}
-saved_3D_dic = {}
+saved_objects_dic = {}
 vector2_pattern = r"\(\s*\d+\s*\|\s*\d+\s*\)"
 vector3_pattern = r"\(\s*\d+\s*\|\s*\d+\s*\|\s*\d+\s*\)"
 name_pattern = r"\b\w{2,}\b" #  Pattern to find a name in an Input
@@ -30,7 +29,7 @@ def FindOrCreate_2D_vectors(vectors):
             found_vectors.append(create_vector2(vector))
         else : 
             try:
-                found_vectors.append(saved_2D_dic[vector])
+                found_vectors.append(saved_objects_dic[vector])
             except(KeyError): CM.WrongInput("This Vector doesn't exist")
     return found_vectors
 
@@ -41,10 +40,10 @@ def FindOrCreate_3D_vectors(vectors):
             found_vectors.append(create_vector3(vector))
         else : 
             try:
-                if (type(saved_3D_dic[vector]) == Straight3D):
-                    found_vectors.append(saved_3D_dic[vector].base_point)
-                    found_vectors.append(saved_3D_dic[vector].direction)
-                else: found_vectors.append(saved_3D_dic[vector])
+                if (type(saved_objects_dic[vector]) == Straight3D):
+                    found_vectors.append(saved_objects_dic[vector].base_point)
+                    found_vectors.append(saved_objects_dic[vector].direction)
+                else: found_vectors.append(saved_objects_dic[vector])
             except(KeyError): CM.WrongInput("This Vector doesn't exist")
     return found_vectors
 
@@ -61,8 +60,8 @@ def FindVectorsInInput(input):
                 found_vectors.append(create_vector3(vector))
             else: 
                 try:
-                    found_vectors.append(saved_2D_dic[vector])
-                    found_vectors.append(saved_3D_dic[vector])
+                    found_vectors.append(saved_objects_dic[vector])
+                    found_vectors.append(saved_objects_dic[vector])
                 except(KeyError): print("One of the options is not available")
         return found_vectors
 
@@ -88,28 +87,28 @@ def create_area(matches):
 
 def save_Vector2(name, value):
     if re.match(vector2_pattern, value):
-        saved_2D_dic[name] = create_vector2(value)
+        saved_objects_dic[name] = create_vector2(value)
     else: CM.WrongInput("keep in mind it has to be (number|number)")
 
 def save_Straight2D(name, value):
     matches = re.findall(name_pattern + "|" + vector2_pattern, value)
     if (len(matches) == 2):
-        saved_2D_dic[name] = create_straight2D(matches)
+        saved_objects_dic[name] = create_straight2D(matches)
     else: CM.WrongInput("Check your Inputs again")    
 
 def save_Vector3D(name, value):
     if re.match(vector3_pattern, value):
-        saved_3D_dic[name] = create_vector3(value)
+        saved_objects_dic[name] = create_vector3(value)
     else: CM.WrongInput("keep in mind it has to be (number|number|number)")
 
 def save_Straight3D(name, value):
     matches = re.findall(name_pattern + "|" + vector3_pattern, value)
     if (len(matches) == 2):
-        saved_3D_dic[name] = create_straight3D(matches)
+        saved_objects_dic[name] = create_straight3D(matches)
     else: CM.WrongInput("Check your Inputs again")  
 
 def save_Area(name, value):
     matches = re.findall(name_pattern + "|" + vector3_pattern, value)
     if (len(matches) == 3 or len(matches) == 2):
-        saved_3D_dic[name] = create_area(matches)
+        saved_objects_dic[name] = create_area(matches)
     else: CM.WrongInput("Check your Inputs again")  
