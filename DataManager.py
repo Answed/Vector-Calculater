@@ -10,16 +10,9 @@ name_pattern = r"\b\w{2,}\b" #  Pattern to find a name in an Input
 # Check if all inputs are of the same type
 def varify_Vectors(vectors):
     sameType = False
-    temptype = None
-    wrongType = []
     for i in range(len(vectors) - 1):  # -2 Because we dont want to go through the last object of the list
-        if(type(vectors[i]) == type(vectors[i+1])):
-            sameType = True
-            temptype = type(vectors[i+1])
-        else:
-            sameType = False
-            wrongType.append[vectors[i]]
-            wrongType.append[vectors[i+1]]
+        if(type(vectors[i]) == type(vectors[i+1])): sameType = True
+        else: sameType = False
     return sameType
 
 def FindOrCreate_2D_vectors(vectors):
@@ -60,7 +53,6 @@ def FindVectorsInInput(input):
                 found_vectors.append(create_vector3(vector))
             else: 
                 try:
-                    found_vectors.append(saved_objects_dic[vector])
                     found_vectors.append(saved_objects_dic[vector])
                 except(KeyError): print("One of the options is not available")
         return found_vectors
