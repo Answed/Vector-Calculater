@@ -89,8 +89,8 @@ class Straight2D:
         else: return False
 
     def convert_straight_to_equation(self):
-        x_equation = "{}+{}x".format(self.base_point.x, self.direction.x)
-        y_equation = "{}+{}x".format(self.base_point.y, self.direction.y)
+        x_equation = "{}+{}t".format(self.base_point.x, self.direction.x)
+        y_equation = "{}+{}t".format(self.base_point.y, self.direction.y)
 
     def distance_between_straights(self, other):
         helparea = self.direction.scalar_product(other.base_point) # Calculates the normal vector of the helparea which is needed for the calculation of the point from the straight
@@ -105,11 +105,18 @@ class Straight3D(Straight2D):
     def __init__(self, base_point : Vector3, direction: Vector3) -> None:
         self.base_point = base_point
         self.direction = direction
-        
+    
+    def point_is_on_straight(self, point: Vector3):
+        x_row_multiplikator = (point.x-self.base_point.x)/self.direction.x
+        y_row_multiplikator = (point.y-self.base_point.y)/self.direction.y
+        z_row_multiplikator = (point.z-self.base_point.z)/self.direction.z
+        if(x_row_multiplikator == y_row_multiplikator == z_row_multiplikator): return True
+        else: return False
+
     def convert_straight_to_equation(self):
-        x_equation = "{}+{}x".format(self.base_point.x, self.direction.x)
-        y_equation = "{}+{}x".format(self.base_point.y, self.direction.y)
-        z_equation = "{}+{}x".format(self.base_point.z, self.direction.z)
+        x_equation = "{}+{}t".format(self.base_point.x, self.direction.x)
+        y_equation = "{}+{}t".format(self.base_point.y, self.direction.y)
+        z_equation = "{}+{}t".format(self.base_point.z, self.direction.z)
         return [x_equation, y_equation, z_equation]
 
 class Area:
