@@ -2,6 +2,8 @@ from VectorClasses import *
 import re
 import CalculatorMessages as CM
 
+# This file manages all of the saved objects and also creates new ones if neccessary/required.
+
 saved_objects_dic = {}
 vector2_pattern = r"\(\s*\d+\s*\|\s*\d+\s*\)"
 vector3_pattern = r"\(\s*\d+\s*\|\s*\d+\s*\|\s*\d+\s*\)"
@@ -43,7 +45,7 @@ def FindOrCreate_3D_vectors(vectors):
 def FindVectorsInInput(input):
     matches = re.findall(name_pattern + "|" + vector3_pattern + "|" + vector2_pattern, input)
     found_vectors = []
-    if (len(matches) < 2):
+    if (len(matches) < 2): # Matches has to be over 2 otherwise you cannot use it for calculations
         CM.WrongInput("Check your Inputs again")
     else: 
         for vector in matches:
@@ -54,7 +56,7 @@ def FindVectorsInInput(input):
             else: 
                 try:
                     found_vectors.append(saved_objects_dic[vector])
-                except(KeyError): print("One of the options is not available")
+                except(KeyError): print("This Object doesn't exist")
         return found_vectors
 
 def  create_vector2(value: str):

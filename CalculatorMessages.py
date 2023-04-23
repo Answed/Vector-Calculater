@@ -1,5 +1,7 @@
 import tkinter as tk
 
+# This file handles all Error/Result messages from the Software
+
 # Is used everythime something went wrong with an input.
 def WrongInput(message: str):
     newWindow = tk.Toplevel()

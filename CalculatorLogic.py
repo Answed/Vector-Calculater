@@ -6,6 +6,8 @@ import numpy as np
 import DataManager as DM
 import CalculatorMessages as CM
 
+# This file hanldes all the calculations, needed for displaying objects or calculating user inputs.
+
 def generate_vector2D(vector: Vector2):
     lenght = vector.length()
     x = []
