@@ -129,8 +129,20 @@ def calculate_distance(vectors):
     if(DM.varify_Vectors(vectors)):
         CM.Result("The distance between the straight {} and {}\n is {}".format(vectors[0], vectors[1], vectors[0].distance_between_straights(vectors[1])))
 
-def check_point(input):
-    vectors = DM.FindVectorsInInput(input)
+def check_area(vectors):
     if(vectors[0].point_is_on_area(vectors[1])):
         CM.Result("The Point {} is on the Area {}".format(vectors[1], vectors[0]))
     else: CM.Result("The Point {} is not on the Area {}".format(vectors[1], vectors[2]))
+
+def check_straight(vectors):
+    if(vectors[0].point_is_on_straight(vectors[1])):
+        CM.Result("The Point {} is on the Straight {}".format(vectors[1], vectors[0]))
+    else: CM.Result("The Point {} is not on the Straight {}".format(vectors[1], vectors[2]))
+
+def check_point(input):
+    vectors = DM.FindVectorsInInput(input)
+    if(type(vectors[0])== Area):
+        check_area(vectors)
+    elif(type(vectors[0]) == Straight2D or type(vectors[0]) == Straight3D):
+        check_straight(vectors)
+        
