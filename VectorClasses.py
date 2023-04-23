@@ -82,6 +82,12 @@ class Straight2D:
         temp_vector = self.direction * multiplier
         return self.base_point + temp_vector
 
+    def point_is_on_straight(self, point: Vector2):
+        x_row_multiplikator = (point.x-self.base_point.x)/self.direction.x
+        y_row_multiplikator = (point.y-self.base_point.y)/self.direction.y
+        if(x_row_multiplikator == y_row_multiplikator): return True
+        else: return False
+
     def convert_straight_to_equation(self):
         x_equation = "{}+{}x".format(self.base_point.x, self.direction.x)
         y_equation = "{}+{}x".format(self.base_point.y, self.direction.y)
