@@ -18,10 +18,10 @@ def generate_vector2D(vector: Vector2):
         y.append(new_point.y)
     return[x, y]
 
-def generate_straight2d(straight: Straight2D):
+def generate_straight2d(straight: Straight2D, length: int):
     x = []
     y = []
-    for i in range(100): # Will be changeable later in development
+    for i in range(length):
         new_point = straight.point_on_straight(i)
         x.append(new_point.x)
         y.append(new_point.y)
@@ -39,26 +39,26 @@ def generate_vector3D(vector: Vector3):
         z.append(new_point.z)
     return[x, y, z]
 
-def generate_straight3d(straight: Straight3D):
+def generate_straight3d(straight: Straight3D, length: int):
     x = []
     y = []
     z = []
-    for i in range(100): # Will be changeable later in development
+    for i in range(length):
         new_point = straight.point_on_straight(i)
         x.append(new_point.x)
         y.append(new_point.y)
         z.append(new_point.z)
     return [x, y, z]
 
-def generate_area(area: Area):
+def generate_area(area: Area, length: int):
     x = []
     y = []
     z = []
     span_striaght1 = Straight3D(area.base_point, area.span_vector1) 
     span_striaght2 = Straight3D(area.base_point, area.span_vector2)
-    for i in range(100): # Will be changeable later in development
+    for i in range(length):
         temp_start_point = span_striaght1.point_on_straight(i)
-        for multi in range(100): # Generates for everypoint from the span_striaght1 a new clone of span_striaght2
+        for multi in range(length): # Generates for everypoint from the span_striaght1 a new clone of span_striaght2
             new_point = span_striaght2.point_on_straight(multi) +  temp_start_point
             x.append(new_point.x)
             y.append(new_point.y)
@@ -71,7 +71,7 @@ def plot_vector2D(vector: Vector2):
     plt.plot(x, y)
 
 def plot_straight2D(straight: Straight2D):
-    x, y = generate_straight2d(straight)
+    x, y = generate_straight2d(straight, 100)
     plt.plot(x, y)
 
 def plot_vector3D(*vector: Vector3):
@@ -83,13 +83,13 @@ def plot_vector3D(*vector: Vector3):
 def plot_straight3D(straight: Straight3D):
     fig = plt.figure()
     ax = plt.axes(projection = "3d")
-    x, y, z = generate_straight3d(straight)
+    x, y, z = generate_straight3d(straight, 100)
     ax.plot3D(x, y, z)
 
 def plot_area(area: Area):
     fig = plt.figure()
     ax = plt.axes(projection = "3d")
-    x, y, z = generate_area(area)
+    x, y, z = generate_area(area, 100)
     ax.plot3D(x, y, z)
 
 def show2D(args):
