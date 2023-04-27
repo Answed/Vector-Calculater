@@ -36,8 +36,8 @@ class Visualize2D(tk.Frame):
         self.load2DVectors()
 
     def load2DVectors(self):
-        if (self.available_vectors.size() < len(DM.saved_2D_dic)):
-            for vector in DM.saved_2D_dic:
+        if (self.available_vectors.size() < len(DM.saved_objects_dic)):
+            for vector in DM.saved_objects_dic:
                 if not vector in self.available_vectors.get(0, tk.END):
                     self.available_vectors.insert(tk.END ,vector)
                     self.after(1000, self.load2DVectors)
@@ -70,8 +70,8 @@ class Visualize3D(tk.Frame):
         self.load3DVectors()
 
     def load3DVectors(self):
-        if (self.available_vectors.size() < len(DM.saved_3D_dic)):
-            for vector in DM.saved_3D_dic:
+        if (self.available_vectors.size() < len(DM.saved_objects_dic)):
+            for vector in DM.saved_objects_dic:
                 if not vector in self.available_vectors.get(0, tk.END):
                     self.available_vectors.insert(tk.END ,vector)
                     self.after(1000, self.load3DVectors)

@@ -94,7 +94,7 @@ def plot_area(area: Area):
 
 def show2D(args):
     for arg in args:
-        value = DM.saved_2D_dic[arg]
+        value = DM.saved_objects_dic[arg]
         if (type(value) == Vector2):
             plot_vector2D(value)
         if(type(value) == Straight2D):
@@ -103,7 +103,7 @@ def show2D(args):
 
 def show3D(args):
     for arg in args:
-        value = DM.saved_3D_dic[arg]
+        value = DM.saved_objects_dic[arg]
         if(type(value) == Vector3):
             plot_vector3D(value)
         if(type(value) == Straight3D):
