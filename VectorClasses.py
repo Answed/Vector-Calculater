@@ -9,15 +9,15 @@ class Vector2:
 
     # Function overrides which are requierd for vector math operations
     def __add__(self, other): # Allows that two Vector2s can be added to each other. Resulting Vector is a new Vector2 to ensure that no data gets corupted and easy working with different Vectors multiple times.
-        return Vector2(self.x + other.x, self.y + other.y)
+        return Vector2(self.x + other.x, self.y + other.y, self.tag)
     def __sub__(self, other): # Allows that two Vector2s can be subtracted from each other
-        return Vector2(self.x - other.x, self.y - other.y) 
+        return Vector2(self.x - other.x, self.y - other.y, self.tag) 
     def __mul__(self, other): # Allows to multiply a Vector2 with floats or intigers
-        return Vector2(self.x * other, self.y * other)
+        return Vector2(self.x * other, self.y * other, self.tag)
     def __truediv__(self, other): # Allows to divide a Vector2 with floats or intigers
-        return Vector2(self.x / other, self.y / other)
+        return Vector2(self.x / other, self.y / other, self.tag)
     def __str__(self):
-        return "({} | {})".format(self.x, self.y)
+        return "({} | {})".format(self.x, self.y, self.tag)
     
     # Special cases from vecotors
     def length(self): # Magnitude/lenght of the vector
@@ -28,9 +28,9 @@ class Vector2:
     
     # Calculations where another vector is required for 
     def scalar_product(self, other): # Allows to calculate the skalar from two vecotor2's
-        return(self.x * other.y + self.y * other.y)
+        return(self.x * other.y + self.y * other.y, self.tag)
     def cross_product(self, other):
-        return self.x * other.y - self.y - other.x
+        return (self.x * other.y - self.y - other.x, self.tag)
     def angle_between_vectors(self, other):
         scalar_product = self.scalar_product(other)
         try:
@@ -48,13 +48,13 @@ class Vector3(Vector2):
 
     # Function overrides which are requierd for vector math operations
     def __add__(self, other): # Allows that two Vector3s can be added to each other. Resulting Vector is a new Vector3 to ensure that no data gets corupted and easy working with different Vectors multiple times.
-        return Vector3(self.x + other.x, self.y + other.y, self.z + other.z)
+        return Vector3(self.x + other.x, self.y + other.y, self.z + other.z, self.tag)
     def __sub__(self, other): # Allows that two Vector2s can be subtracted from each other
-        return Vector3(self.x - other.x, self.y - other.y, self.z - other.z) 
+        return Vector3(self.x - other.x, self.y - other.y, self.z - other.z, self.tag) 
     def __mul__(self, other): # Allows to multiply a Vector3 with floats or intigers
-        return Vector3(self.x * other, self.y * other, self.z * other)
+        return Vector3(self.x * other, self.y * other, self.z * other, self.tag)
     def __truediv__(self, other): # Allows to divide a Vector3 with floats or intigers
-        return Vector3(self.x / other, self.y / other, self.z / other)
+        return Vector3(self.x / other, self.y / other, self.z / other, self.tag)
     def __str__(self):
         return "({} | {} | {})".format(self.x, self.y, self.z)
 
@@ -63,7 +63,7 @@ class Vector3(Vector2):
         return mt.sqrt(self.x**2 + self.y**2 + self.z**2)
     def normalize(self): # Calculates the normalized version of a Vector3
         lenghtOfVector = self.length()
-        return Vector3(self.x / lenghtOfVector, self.y / lenghtOfVector, self.z / lenghtOfVector)
+        return Vector3(self.x / lenghtOfVector, self.y / lenghtOfVector, self.z / lenghtOfVector, self.tag)
     
     # Calculations where another vector is required for 
     def scalar_product(self, other): # Allows to calculate the skalar from two vecotor3's 
@@ -73,7 +73,7 @@ class Vector3(Vector2):
         new_x = self.y * other.z - self.z * other.y
         new_y = self.z * other.x - self.x * other.z
         new_z = self.x * other.y - self.y * other.x
-        return Vector3(new_x, new_y, new_z)
+        return Vector3(new_x, new_y, new_z, self.tag)
     
 class Straight2D:
     def __init__(self, base_point : Vector2, direction: Vector2, tag) -> None:
