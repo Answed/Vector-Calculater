@@ -2,9 +2,10 @@ import math as mt
 import CalculatorMessages as CM
 # Describes a vector with two dimensions.
 class Vector2:
-    def __init__(self, xValue, yValue) -> None:
+    def __init__(self, xValue, yValue, tag) -> None:
         self.x = xValue
         self.y = yValue
+        self.tag = tag
 
     # Function overrides which are requierd for vector math operations
     def __add__(self, other): # Allows that two Vector2s can be added to each other. Resulting Vector is a new Vector2 to ensure that no data gets corupted and easy working with different Vectors multiple times.
@@ -74,9 +75,10 @@ class Vector3(Vector2):
         return Vector3(new_x, new_y, new_z)
     
 class Straight2D:
-    def __init__(self, base_point : Vector2, direction: Vector2) -> None:
+    def __init__(self, base_point : Vector2, direction: Vector2, tag) -> None:
         self.base_point = base_point
         self.direction = direction
+        self.tag = tag
         
     def point_on_straight(self, multiplier):
         temp_vector = self.direction * multiplier
@@ -120,10 +122,11 @@ class Straight3D(Straight2D):
         return [x_equation, y_equation, z_equation]
 
 class Area:
-    def __init__(self, base_point: Vector3, span_vector1: Vector3, span_vector2: Vector3) -> None:
+    def __init__(self, base_point: Vector3, span_vector1: Vector3, span_vector2: Vector3, tag) -> None:
         self.base_point = base_point
         self.span_vector1 = span_vector1
         self.span_vector2 = span_vector2
+        self.tag = tag
         self.normal_vector = self.span_vector1.cross_product(self.span_vector2)
 
     def point_is_on_area(self, point): # Basically is it the normal form from the area equation
@@ -141,3 +144,4 @@ class Area:
     def distance_to_point(self, point): # Based on the Hesse normal form
         check_value = self.coordinate_form()
         return abs((self.normal_vector.scalar_product(point) - check_value)/ self.normal_vector.length()) # Always returns the absolut Value so always returns the positiv value.
+    
