@@ -40,11 +40,12 @@ class Vector2:
         return mt.degrees(angle)
 
 class Vector3(Vector2):
-    def __init__(self, xValue, yValue, zValue) -> None:
+    def __init__(self, xValue, yValue, zValue, tag) -> None:
         self.x = xValue
         self.y = yValue
         self.z = zValue
-    
+        self.tag = tag 
+
     # Function overrides which are requierd for vector math operations
     def __add__(self, other): # Allows that two Vector3s can be added to each other. Resulting Vector is a new Vector3 to ensure that no data gets corupted and easy working with different Vectors multiple times.
         return Vector3(self.x + other.x, self.y + other.y, self.z + other.z)
@@ -104,9 +105,10 @@ class Straight2D:
         return distance_vector.length()
     
 class Straight3D(Straight2D):
-    def __init__(self, base_point : Vector3, direction: Vector3) -> None:
+    def __init__(self, base_point : Vector3, direction: Vector3, tag) -> None:
         self.base_point = base_point
         self.direction = direction
+        self.tag = tag
     
     def point_is_on_straight(self, point: Vector3):
         x_row_multiplikator = (point.x-self.base_point.x)/self.direction.x

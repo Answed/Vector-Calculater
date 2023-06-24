@@ -61,23 +61,23 @@ def FindVectorsInInput(input):
 
 def  create_vector2(value: str):
     vector_values = re.findall(r"\d+", value)
-    return Vector2(float(vector_values[0]), float(vector_values[1]))
+    return Vector2(float(vector_values[0]), float(vector_values[1]), tag="2D")
 
 def create_straight2D(matches):
     tempVectors = FindOrCreate_2D_vectors(matches)
-    return Straight2D(tempVectors[0], tempVectors[1])
+    return Straight2D(tempVectors[0], tempVectors[1], tag="2D")
 
 def create_vector3(value: str):
     vector_values = re.findall(r"\d+", value)
-    return Vector3(float(vector_values[0]), float(vector_values[1]), float(vector_values[2]))
+    return Vector3(float(vector_values[0]), float(vector_values[1]), float(vector_values[2]), tag="3D")
 
 def create_straight3D(matches):
     tempVectors = FindOrCreate_3D_vectors(matches)
-    return Straight3D(tempVectors[0], tempVectors[1])
+    return Straight3D(tempVectors[0], tempVectors[1], tag="3D")
     
 def create_area(matches):
     tempVectors = FindOrCreate_3D_vectors(matches)
-    return Area(tempVectors[0], tempVectors[1], tempVectors[2])
+    return Area(tempVectors[0], tempVectors[1], tempVectors[2], tag="3D")
 
 def save_Vector2(name, value):
     if re.match(vector2_pattern, value):
