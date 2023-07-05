@@ -3,6 +3,7 @@ from tkinter import ttk
 from VectorClasses import*
 import CalculatorLogic as Cl
 import DataManager as DM
+import threading
 
 main_Frame = tk.Tk()
 main_Frame.title("Vector Calculator")
@@ -33,15 +34,15 @@ class Visualize2D(tk.Frame):
         self.selected_vectors.grid(column=2, row=2)
         display_vector_B.grid(column=2, row=3)
 
-        self.load2DVectors()
+        loadVectors = threading.Thread(target=self.load2DVectors)
+        loadVectors.start()
 
     def load2DVectors(self):
-        if (self.available_vectors.size() < len(DM.saved_objects_dic)):
-            for vector in DM.saved_objects_dic:
-                if not vector in self.available_vectors.get(0, tk.END) and DM.saved_objects_dic[vector].tag == "2D":
-                    self.available_vectors.insert(tk.END ,vector)
-                    self.after(1000, self.load2DVectors)
-        else:   self.after(1000, self.load2DVectors)
+        for vector in DM.saved_objects_dic:
+            if not vector in self.available_vectors.get(0, tk.END) and DM.saved_objects_dic[vector].tag == "2D":
+                self.available_vectors.insert(tk.END ,vector)
+                self.after(1000, self.load2DVectors)
+        self.after(1000, self.load2DVectors)
     
     def add_vector(self):
         self.selected_vectors.insert(tk.END, self.available_vectors.get(tk.ANCHOR))
@@ -67,15 +68,15 @@ class Visualize3D(tk.Frame):
         self.selected_vectors.grid(column=2, row=2)
         display_vector_B.grid(column=2, row=3)
 
-        self.load3DVectors()
+        loadVectors = threading.Thread(target=self.load3DVectors)
+        loadVectors.start()
 
     def load3DVectors(self):
-        if (self.available_vectors.size() < len(DM.saved_objects_dic)):
-            for vector in DM.saved_objects_dic:
-                if not vector in self.available_vectors.get(0, tk.END) and DM.saved_objects_dic[vector].tag == "3D":
-                    self.available_vectors.insert(tk.END ,vector)
-                    self.after(1000, self.load3DVectors)
-        else:   self.after(1000, self.load3DVectors)
+        for vector in DM.saved_objects_dic:
+            if not vector in self.available_vectors.get(0, tk.END) and DM.saved_objects_dic[vector].tag == "3D":
+                self.available_vectors.insert(tk.END ,vector)
+                self.after(1000, self.load3DVectors)
+        self.after(1000, self.load3DVectors)
     
     def add_vector(self):
         self.selected_vectors.insert(tk.END, self.available_vectors.get(tk.ANCHOR))
