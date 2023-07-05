@@ -38,7 +38,6 @@ class Visualize2D(tk.Frame):
     def load2DVectors(self):
         if (self.available_vectors.size() < len(DM.saved_objects_dic)):
             for vector in DM.saved_objects_dic:
-                print(type(DM.saved_objects_dic[vector].tag))
                 if not vector in self.available_vectors.get(0, tk.END) and DM.saved_objects_dic[vector].tag == "2D":
                     self.available_vectors.insert(tk.END ,vector)
                     self.after(1000, self.load2DVectors)

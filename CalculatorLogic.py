@@ -74,10 +74,10 @@ def plot_straight2D(straight: Straight2D):
     x, y = generate_straight2d(straight, 100)
     plt.plot(x, y)
 
-def plot_vector3D(*vector: Vector3):
+def plot_vector3D(vector: Vector3):
     fig = plt.figure()
     ax = plt.axes(projection = "3d")
-    x, y, z = generate_vector2D(vector)
+    x, y, z = generate_vector3D(vector)
     plt.plot(x, y, z)
 
 def plot_straight3D(straight: Straight3D):
