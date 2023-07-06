@@ -119,9 +119,13 @@ def calculate_angel(vectors):
 
 def calculate_sum(vectors):
     vectors = DM.FindVectorsInInput(vectors)
+    mathoperators = DM.FindMathOperator(vectors)
     if(DM.varify_Vectors(vectors)):
-        for i in range(1, len(vectors)):
-            vectors[0] += vectors[i]
+        for i in range(0, len(mathoperators)):
+            if(mathoperators[i] == "+"):
+                vectors[0] += vectors[i+1]
+            elif(mathoperators[i] == "-"):
+                vectors[0] -= vectors[i+1]
         CM.Result("The sum of the vectors is {}".format(vectors[0]))
 
 def calculate_distance(vectors):
