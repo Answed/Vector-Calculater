@@ -7,7 +7,12 @@ import CalculatorMessages as CM
 saved_objects_dic = {}
 vector2_pattern = r"\(\s*\d+\s*\|\s*\d+\s*\)"
 vector3_pattern = r"\(\s*\d+\s*\|\s*\d+\s*\|\s*\d+\s*\)"
+operators = r"[-+*/]"
 name_pattern = r"\b\w{2,}\b" #  Pattern to find a name in an Input
+
+def FindMathOperator(input):
+    matches = re.findall(operators)
+    return matches
 
 def FindOrCreate_2D_vectors(vectors):
     found_vectors = []
