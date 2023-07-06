@@ -12,7 +12,9 @@ name_pattern = r"\b\w{2,}\b" #  Pattern to find a name in an Input
 
 def FindMathOperator(input):
     matches = re.findall(operators)
-    return matches
+    if (len(matches) == 0):
+        CM.WrongInput("You forgot to actually say what to do with the vectors")
+    else: return matches
 
 def FindOrCreate_2D_vectors(vectors):
     found_vectors = []
@@ -58,7 +60,7 @@ def FindVectorsInInput(input):
                 except(KeyError): print("This Object doesn't exist")
         return found_vectors
 
-def  create_vector2(value: str):
+def create_vector2(value: str):
     vector_values = re.findall(r"\d+", value)
     return Vector2(float(vector_values[0]), float(vector_values[1]), tag="2D")
 
