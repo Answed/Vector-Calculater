@@ -11,7 +11,7 @@ operators = r"[-+*/]"
 name_pattern = r"\b\w{2,}\b" #  Pattern to find a name in an Input
 
 def FindMathOperator(input):
-    matches = re.findall(operators)
+    matches = re.findall(operators, input)
     if (len(matches) == 0):
         CM.WrongInput("You forgot to actually say what to do with the vectors")
     else: return matches
