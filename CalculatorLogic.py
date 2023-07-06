@@ -117,9 +117,9 @@ def calculate_angel(vectors):
     if (DM.varify_Vectors(vectors)):
         CM.Result("The angle between the vector {} and {}\n is {}".format(vectors[0], vectors[1], vectors[0].angle_between_vectors(vectors[1])))
 
-def calculate_sum(vectors):
-    vectors = DM.FindVectorsInInput(vectors)
-    mathoperators = DM.FindMathOperator(vectors)
+def calculate_sum(input):
+    vectors = DM.FindVectorsInInput(input)
+    mathoperators = DM.FindMathOperator(input)
     if(DM.varify_Vectors(vectors)):
         for i in range(0, len(mathoperators)):
             if(mathoperators[i] == "+"):
