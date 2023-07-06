@@ -10,6 +10,17 @@ vector3_pattern = r"\(\s*\d+\s*\|\s*\d+\s*\|\s*\d+\s*\)"
 operators = r"[-+*/]"
 name_pattern = r"\b\w{2,}\b" #  Pattern to find a name in an Input
 
+def varify_Vectors(vectors):
+    tag_3D = 0
+    tag_2D = 0
+    for vector in vectors:
+        if(vector.tag == "3D"):
+            tag_3D +=1
+        else: tag_2D += 1
+    if(tag_3D == len(vectors) or tag_2D == len(vectors)):
+        return True
+    else: return False
+
 def FindMathOperator(input):
     matches = re.findall(operators, input)
     if (len(matches) == 0):
