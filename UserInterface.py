@@ -26,7 +26,7 @@ class Visualize2D(tk.Frame):
         add_vector_B = tk.Button(self, text="Add Vector", command=lambda: self.add_vector())
         display_vector_B = tk.Button(self, text="Show selected \n vectors", command=lambda: Cl.show2D(self.selected_vectors.get(0, tk.END))) 
         delete_vector_B = tk.Button(self, text="Delete Object", command=lambda: self.delete_vector())
-        remove_vector_B = tk.Button(self, text="Remove Object", command=lambda: self.remove_vector)
+        remove_vector_B = tk.Button(self, text="Remove Object", command=lambda: self.remove_vector())
 
         head_of_tab_L.grid(column=1, row=0)
         available_vectors_L.grid(column=0, row=1)
@@ -74,7 +74,7 @@ class Visualize3D(tk.Frame):
         add_vector_B = tk.Button(self, text="Add Vector", command=lambda: self.add_vector())
         display_vector_B = tk.Button(self, text="Show selected \n vectors", command=lambda: Cl.show3D(self.selected_vectors.get(0, tk.END))) 
         delete_vector_B = tk.Button(self, text="Delete Object", command=lambda: self.delete_vector())
-        remove_vector_B = tk.Button(self, text="Remove Object", command=lambda: self.remove_vector)
+        remove_vector_B = tk.Button(self, text="Remove Object", command=lambda: self.remove_vector())
 
 
         head_of_tab_L.grid(column=1, row=0)
