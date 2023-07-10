@@ -49,6 +49,13 @@ class Visualize2D(tk.Frame):
     
     def remove_vector(self):
         self.selected_vectors.delete(tk.ANCHOR)
+    
+    def delete_vector(self):
+        selected_vector = self.available_vectors.get(tk.ANCHOR)
+        DM.saved_objects_dic.pop(selected_vector)
+        self.available_vectors.delete(tk.ANCHOR)
+        if(selected_vector in self.selected_vectors.get(0, tk.END)):
+            self.selected_vectors.delete(selected_vector)
 
 class Visualize3D(tk.Frame):
     def __init__(self, master = None):
@@ -86,6 +93,13 @@ class Visualize3D(tk.Frame):
 
     def remove_vector(self):
         self.selected_vectors.delete(tk.ANCHOR)
+
+    def delete_vector(self):
+        selected_vector = self.available_vectors.get(tk.ANCHOR)
+        DM.saved_objects_dic.pop(selected_vector)
+        self.available_vectors.delete(tk.ANCHOR)
+        if(selected_vector in self.selected_vectors.get(0, tk.END)):
+            self.selected_vectors.delete(selected_vector)
 
 class Calculator(tk.Frame):
     def __init__(self, master = None):
