@@ -60,6 +60,8 @@ class Visualize2D(tk.Frame):
         selected_vector = self.available_vectors.get(tk.ANCHOR)
         DM.saved_objects_dic.pop(selected_vector)
         self.available_vectors.delete(tk.ANCHOR)
+        if selected_vector in self.selected_vectors.get(0, tk.END):
+            self.selected_vectors.delete(self.selected_vectors.get(0,tk.END).index(selected_vector))
 
 class Visualize3D(tk.Frame):
     def __init__(self, master = None):
@@ -109,6 +111,8 @@ class Visualize3D(tk.Frame):
         selected_vector = self.available_vectors.get(tk.ANCHOR)
         DM.saved_objects_dic.pop(selected_vector)
         self.available_vectors.delete(tk.ANCHOR)
+        if selected_vector in self.selected_vectors.get(0, tk.END):
+            self.selected_vectors.delete(self.selected_vectors.get(0,tk.END).index(selected_vector))
 
 class Calculator(tk.Frame):
     def __init__(self, master = None):
