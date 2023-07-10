@@ -46,6 +46,9 @@ class Visualize2D(tk.Frame):
     
     def add_vector(self):
         self.selected_vectors.insert(tk.END, self.available_vectors.get(tk.ANCHOR))
+    
+    def remove_vector(self):
+        self.selected_vectors.delete(tk.ANCHOR)
 
 class Visualize3D(tk.Frame):
     def __init__(self, master = None):
@@ -80,6 +83,9 @@ class Visualize3D(tk.Frame):
     
     def add_vector(self):
         self.selected_vectors.insert(tk.END, self.available_vectors.get(tk.ANCHOR))
+
+    def remove_vector(self):
+        self.selected_vectors.delete(tk.ANCHOR)
 
 class Calculator(tk.Frame):
     def __init__(self, master = None):
