@@ -25,14 +25,18 @@ class Visualize2D(tk.Frame):
         self.selected_vectors = tk.Listbox(self)  # Has to be self. so i can use it later to actually add and remove the vectors from the list
         add_vector_B = tk.Button(self, text="Add Vector", command=lambda: self.add_vector())
         display_vector_B = tk.Button(self, text="Show selected \n vectors", command=lambda: Cl.show2D(self.selected_vectors.get(0, tk.END))) 
+        delete_vector_B = tk.Button(self, text="Delete Object", command=lambda: self.delete_vector())
+        remove_vector_B = tk.Button(self, text="Remove Object", command=lambda: self.remove_vector)
 
         head_of_tab_L.grid(column=1, row=0)
         available_vectors_L.grid(column=0, row=1)
         self.available_vectors.grid(column=0, row=2)
         add_vector_B.grid(column=0, row=3)
+        delete_vector_B.grid(column=0, row=4)
         selected_vectors_L.grid(column= 2, row=1)
         self.selected_vectors.grid(column=2, row=2)
         display_vector_B.grid(column=2, row=3)
+        remove_vector_B.grid(column=2, row=4)
 
         loadVectors = threading.Thread(target=self.load2DVectors)
         loadVectors.start()
