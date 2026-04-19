@@ -12,7 +12,7 @@ main_Frame.geometry("480x470")
 tabcontrol = ttk.Notebook(main_Frame)
 
 main_tab = ttk.Frame(tabcontrol)
-
+#Just for boot.dev
 class Visualize2D(tk.Frame):
     def __init__(self, master = None):
         super().__init__(master=master)
